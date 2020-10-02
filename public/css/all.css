@@ -1976,11 +1976,13 @@ a:hover {
 
 .caption {
   margin-top: 20px;
+  font-size: 14px;
   text-align: center;
+  color: #3333;
 }
 
 .caption a {
-  font-size: 15px;
+  font-size: 13px;
   color: #999;
   text-decoration: none;
 }
@@ -2102,7 +2104,7 @@ a:hover {
 }
 
 .healthtopic-gr {
-  background-color: #fc5c65;
+  background-color: #3867d6;
   border-radius: 20px;
   color: white;
   font-weight: 500;
@@ -2111,8 +2113,8 @@ a:hover {
 /* 의학정보 크롤링을 감싸는 박스 */
 .ht-board {
   border-radius: 50px;
-  width: 70%;
-  margin: 50px;
+  width: 60%;
+  margin: 50px 0 150px 0;
   background-color: #9292920d;
 }
 
@@ -2438,7 +2440,7 @@ body .no-padding {
 }
 
 .heading-holder h3 {
-  margin: 40px;
+  margin: 40px 0 20px 0;
 }
 
 /* 마이페이지 테이블 */
@@ -2589,4 +2591,19 @@ td {
 
 .deleteId :placeholder {
   font-size: 13px;
+}
+
+.crawling-table {
+  margin-top: 30px;
+  width: 750px;
+  background: #9292920d;
+  border: #333;
+  font-weight: 400;
+  font-size: initial;
+}
+
+.crawling-table td:first-child {
+  background: #3867d6;
+  color: white;
+  border-bottom: white solid 1px;
 }

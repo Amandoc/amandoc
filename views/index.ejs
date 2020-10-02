@@ -245,29 +245,25 @@
                 <% } %>
                 <div class="btn-holder">
                   <a href="/healthtopic" class="btn btn-link"
-                    >더 많은 의학정보 보러가기</a
+                    >의학정보</a
                   >
                 </div>
               </div>
               <div class="col-md-4">
                 <h3>공지사항</h3>
-                <h4><a href="#">Custom Themes 1.1</a></h4>
+                <h4><a href="#">개인정보처리방침 개정 안내</a></h4>
                 <p>
-                  Etiam viverra vulputate diam, pulvinar cursus augue egestas
-                  ullamcorper.
+                  개인정보처리방침 개정 안내 드립니다.
+                  2. 개인정보 수집 및 이용 목적
+                  3. 개인정보 처리 및 보유기간
+                  6. 수집한 개인정보의 취급위탁
                 </p>
-                <h4><a href="#">Filter Forge</a></h4>
-                <p>Nulla purus quam, pulvinar sed et, feugiat maximus velit.</p>
-                <h4><a href="#">WebZap</a></h4>
+                <h4><a href="#">재외국민 온라인 의료상담 & 자문 서비스</a></h4>
+                <p>현지병원에서 받은 검사(혈액검사, 조직검사, X-ray, CT나 MRI)결과에 대해 한국의료진의 해석 및 판독을 받고 싶은 분
+                  현지병원에서 받은 진단에 대해 한국의사의 의견을 듣고 싶은 분</p>
+                <h4><a href="#">2020 추석연휴기간 진료안내</a></h4>
                 <p>
-                  Morbi imperdiet, leo in interdum pretium, elit eros dapibus
-                  velit, eu posuere quam diam vitae orci. Suspendisse interdum
-                  accumsan magna vitae commodo.
-                </p>
-                <h4><a href="#">Renamy</a></h4>
-                <p>
-                  Vivamus consectetur suscipit elit, ut lacinia diam elementum
-                  et.
+                  추석연휴기간 진료와 관련하여 아래와 같이 안내하오니 이용에 착오없으시기 바랍니다.
                 </p>
                 <div class="btn-holder">
                   <a href="#" class="btn btn-link">공지사항</a>
@@ -281,6 +277,7 @@
                   <td colspan="5">게시글이 없습니다.</td>
                 </tr>
                 <% } %> <% qna.forEach(function(qna) { %>
+                <h4>
                 <tr>
                   <td>
                     <a href="/qna/<%= qna._id %>"
@@ -291,8 +288,11 @@
                   <td class="date">
                     <span data-date="<%= qna.createdAt %>"></span>
                   </td>
-                </tr>
+                </tr></h4>
                 <% }) %>
+                <div class="btn-holder">
+                  <a href="/qna" class="btn btn-link">게시판</a>
+                </div>
               </div>
             </div>
           </div>
