@@ -335,6 +335,11 @@ a:hover {
   padding: 90px 0;
 }
 
+.text-block img {
+  width: 50%;
+  margin: 20px;
+}
+
 #cta {
   position: relative;
   z-index: 1;

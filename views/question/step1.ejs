@@ -42,12 +42,15 @@
             <div class="heading-holder">
               <!-- 로그인이 안되어 있는 경우 -->
               <% if(user == null || user.length == 0){ %>
-              <h3>회원만 이용할 수 있습니다. 로그인을 해주세요.</h3>
+              <h3>
+                회원만 이용할 수 있는 서비스입니다. 로그인 혹은 회원가입
+                페이지로 이동합니다.
+              </h3>
               <a href="/">메인페이지로 돌아가기</a>
               <% } else { %>
 
               <!-- 처음 예진표를 작성하는 경우! / New & Create -->
-              <h2>예진표 작성 페이지입니다</h2>
+              <h2>예진표 작성</h2>
               <% if(step1 == null || step1.length == 0){ %>
               <form action="/question/step1" method="post">
                 <div>
@@ -125,14 +128,16 @@
                 </div>
                 <div>
                   <button>
-                    <a href="javascript:history.back();">뒤로가기</a></button
-                  ><button type="submit">Step2로 가기</button>
+                    <a href="javascript:history.back();">뒤로</a></button
+                  ><button type="submit">다음</button>
                 </div>
               </form>
 
               <% } else { %>
               <!-- 작성한 내용이 있을 경우! / Update -->
-              <h3>*<%= user.name%>님께서 이전에 작성한 내용입니다.</h3>
+              <h4 style="color: #3867d6">
+                <%= user.name%>님께서 이전에 작성한 내용입니다.
+              </h4>
               <form action="/question/step1_update?_method=put" method="post">
                 <div>
                   <input type="hidden" name="p_id" value="<%= user._id%>" />
@@ -296,9 +301,9 @@
                 </div>
                 <div>
                   <button>
-                    <a href="javascript:history.back();">뒤로가기</a>
+                    <a href="javascript:history.back();">뒤로</a>
                   </button>
-                  <button type="submit">Step2로 가기</button>
+                  <button type="submit">STEP 2</button>
                 </div>
               </form>
               <% } %> <% } %>
