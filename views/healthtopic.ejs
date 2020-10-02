@@ -8,6 +8,7 @@
         <div class="container">
           <div class="text-block">
             <div class="heading-holder">
+              <h3>의학정보</h3>
               <!-- 코로나 확진자 수 크롤링 -->
               <div class="ht-board">
                 <h3>코로나 환자 실시간 현황</h3>
@@ -47,9 +48,10 @@
               ></iframe>
 
               <!-- 건강정보 크롤링 -->
-              <div>
+              <div style="margin-top: 150px">
                 <h3>이달의 건강소식</h3>
-                <table border="2px solid black" text-align="left">
+                <h5>출처 : 질병관리청</h5>
+                <table class="crawling-table" text-align="left">
                   <% infoArr.forEach(function(element, i) { %>
                   <tr>
                     <td><%= i+1 %></td>
@@ -63,7 +65,6 @@
                   </tr>
                   <% }) %>
                 </table>
-                <p>출처: 질병관리청</p>
               </div>
               <!--건강 정보 크롤링의 끝-->
             </div>
