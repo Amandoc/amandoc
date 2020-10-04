@@ -43,8 +43,8 @@
       }
       .video-position {
         position: absolute;
-        top: 35%;
-        left: 50%;
+        top: 33%;
+        left: 62%;
         transform: translate(-50%, -50%);
       }
       #video-chat-container {
@@ -105,30 +105,30 @@
       <% } else { %>
 
       <!-- 로그인 O -->
-      <h2><%= user.name %>님께서 작성하신 내용입니다.</h2>
-      <div>
-        <h3>개인신상</h3>
-        신장: <%= step1.height %> <br>
-
-        체중: <%= step1.weight %> <br>
+      
+      <div style="margin-top:10em">
+        <h3 style="margin-left:4em"><%= user.name %>님께서 작성하신 내용입니다.</h3>
+        <h4 style="margin-left:10em; font-weight: bold;">개인신상</h4>
+        <span style="margin-left: 10em;">신장: <%= step1.height %></span><br>
+        <span style="margin-left: 10em;">체중: <%= step1.weight %></span><br>
         
-        <% if (step1.history == '' || step1.history == ' ') { %> 과거병력: 해당없음
-        <% } else { %> 과거병력: <%= step1.history %> <% } %> <br> 
+        <% if (step1.history == '' || step1.history == ' ') { %> <span style="margin-left: 10em;">과거병력: 해당없음</span>
+        <% } else { %> <span style="margin-left: 10em;">과거병력: <%= step1.history %></span> <% } %><br> 
 
-        <% if (step1.family_member == '' || step1.family_member == ' ') { %> 가족력: 해당없음
-        <% } else { %> 가족력: <%= step1.family_member %> <%= step1.family_disease %> <% } %> <br>
+        <% if (step1.family_member == '' || step1.family_member == ' ') { %> <span style="margin-left: 10em;">가족력: 해당없음</span>
+        <% } else { %> <span style="margin-left: 10em;">가족력: <%= step1.family_member %> <%= step1.family_disease %></span> <% } %><br>
 
-        <% if (step1.drug == '' || step1.drug == ' ') { %> 복용약: 해당없음
-        <% } else { %> 복용약: <%= step1.drug %> <% } %> <br> 
-        <% if (step1.drink_week == '해당없음') { %> 음주: <%= step1.drink_week %> <br>
-        <% } else {%> 음주: <%= step1.drink_week %> <%= step1.drink_cnt %> <br> <% } %>
-        담배: <%= step1.smoke_cnt %>
+        <% if (step1.drug == '' || step1.drug == ' ') { %> <span style="margin-left: 10em;">복용약: 해당없음</span>
+        <% } else { %> <span style="margin-left: 10em;">복용약: <%= step1.drug %></span> <% } %> <br> 
+        <% if (step1.drink_week == '해당없음') { %> <span style="margin-left: 10em;">음주: <%= step1.drink_week %></span> <br>
+        <% } else {%> <span style="margin-left: 10em;">음주: <%= step1.drink_week %> <%= step1.drink_cnt %></span> <br> <% } %>
+        <span style="margin-left: 10em;">담배: <%= step1.smoke_cnt %></span>
       </div>
       <div>
-        <h3>예진표</h3>
-        초진여부: <%= step2.treat_time %> <br>
-        진료과목: <%= step2.treat_div %> <br>
-        증상: <%= step2.disease_desc  %> <br>
+        <h4 style="margin-left:10em; font-weight: bold;">예진표</h4>
+        <span style="margin-left: 10em;">초진여부: <%= step2.treat_time %></span> <br>
+        <span style="margin-left: 10em;">진료과목: <%= step2.treat_div %></span> <br>
+        <span style="margin-left: 10em;">증상: <%= step2.disease_desc  %></span> <br>
       </div>
     <% } %>
     </div>
@@ -145,8 +145,8 @@
         <h5>의사화면</h5>
         <video id="remote-video" autoplay="autoplay"></video>
     </div>
-    <button><a href="/mypage/mytreat">진료 완료</a></button>
-    <button><a href="/">메인으로</a></button>
+    <button style="margin-left: 8em;"><a href="/mypage/mytreat">진료 완료</a></button>
+    <button ><a href="/">메인으로</a></button>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script type="text/javascript" src="rts.js"></script>

@@ -43,8 +43,8 @@
       }
       .video-position {
         position: absolute;
-        top: 35%;
-        left: 50%;
+        top: 40%;
+        left: 60%;
         transform: translate(-50%, -50%);
       }
       #video-chat-container {
@@ -99,10 +99,10 @@
 
     <div id="room-selection-container" class="centered">
       <input id="room-input" type="hidden" value="1234"/>
-      <button id="connect-button">의사와 연결하기</button>
+      <button id="connect-button">환자와 연결하기</button>
     </div>
 
-    <div id="video-chat-container" class="video-position" style="display: none">
+    <div id="video-chat-container" class="video-position" style="display: none;">
         <div>
           <b><%=user.p_id %>님의 화면 </b>
         </div>
@@ -112,26 +112,28 @@
     </div>
     <br><br><br>
     <div>
-    <h2>의사 소견 입력란</h2>
+    <h2 style="margin-left: 4em;">의사 소견 입력란</h2>
+    <div style="margin-left: 1.2em;">
    <form action="/doctor/description" method="post">
-      <textarea name="description"></textarea>
+      <textarea id="desc" name="description" cols="50" rows="5"></textarea>
       <input type="hidden" name="Dname" value="<%=user.name%>"/>
-      <input type="hidden" id="_id" name="_id" value=""/>
-      <input type="submit" class="isCheck" value="소견 작성하기"/> 
+      <input type="hidden" id="_id" name="_id" value=""/><br>
+      <input type="submit" class="isCheck" value="소견 작성하기" style="margin-left: 17.85em;"/> 
     </form>
   </div>
-    <div>
-        환자 아이디 : <input type="text" id="p_id" name="p_id">
+  </div>
+    <div><br>
+        <span style="margin-left:3em;">환자 아이디 : <input type="text" id="p_id" name="p_id"></span>
         <button type="submit" class="userSearch">조회</button>
-        <div>
-          <h2 id="patient_info"></h2>
-          <p id="treat_time"></p><br>
-          <p id="treat_div"></p><br>
-          <p id="disease_desc"></p><br>
-          <h2 id="patient_waiting">진료 대기중입니다.</h2>
+        <div style="margin-left: 1.2em;">
+          <h2 id="patient_info" style="margin-left: 5em;"></h2>
+          <p id="treat_time" style="margin-left: 7em;"></p>
+          <p id="treat_div" style="margin-left: 7em;"></p>
+          <p id="disease_desc" style="margin-left: 7em;"></p>
+          <h2 id="patient_waiting" style="margin-left: 3em;">진료 대기중입니다.</h2>
         </div>
     </div>
-    <button><a href="/doctor/call">나가기</a></button>
+    <button style="margin-left: 11em;"><a href="/doctor/call">나가기</a></button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
@@ -142,9 +144,14 @@
       $(function(){
         $('.isCheck').click(e=>{
           let p_id = $('#_id').val();
-          if(!p_id){
+          let desc = $('#desc').val();
+          if(!p_id || p_id.length == 0){
             e.preventDefault();
-            alert('환자를 검색해주세요');
+            alert('환자를 검색해 주세요.');
+          }
+          else if(!desc || desc.length == 0){
+            e.preventDefault();
+            alert('소견을 입력해 주세요.');
           }
         })
         $('.userSearch').click(e=>{

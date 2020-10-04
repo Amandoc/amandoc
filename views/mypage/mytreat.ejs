@@ -1,10 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>원격 의료 매칭 서비스, 아만닥</title>
-</head>
+<html>
+    <%- include('../partials/head') %>
 <style>
     table,th,td{
         border: solid 1px black; 
@@ -21,9 +17,9 @@
     }
 </style>
 <body>
-    <div>
+    <div id="wrapper" style="margin-top: 10em; padding-left:34em;">
+        <%- include('../partials/nav') %>
         <h1>내 진료 이력</h1>
-        
             <% if (step2 !== null && step2.length !== 0) {%>
                 <p>내가 받은 진료 이력입니다.</p>
             <% for(i=0;i< step2.length;i++) { %>
@@ -58,7 +54,7 @@
                 <%}else{%>
                     <h2>진료기록이 없습니다.</h2>
                 <%}%>
-        <nav class="col-8">
+        <nav class="col-8" style="margin-left: 7em;">
             <% 
               var offset = 2;
               var previousBtnEnabled = currentPage>1;
@@ -80,18 +76,21 @@
               </li>
             </ul>
           </nav>
+          <div style="margin-left: 8em;">
+                <a href="/mypage">개인 정보</a>
+                <a href="/mypage/mytreat">진료 기록</a>
+                <a href="/">메인으로</a>
+          </div>
     </div>
-    <a href="/mypage">개인 정보</a>
-    <a href="/mypage/mytreat">진료 기록</a>
-    <a href="/">메인으로</a>
+    <%- include('../partials/footer') %>
     <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
     <script src="/js/jquery.main.js"></script>
     <script>
         $(function(){
             $(".print").click(e=>{
                 let desc = {};
                 desc = $('.desc').text();
-                console.log(desc);
                 if(desc !== '기록없음'){
                     e.preventDefault();
                     alert('처방전이 출력되었습니다!');
