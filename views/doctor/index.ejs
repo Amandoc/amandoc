@@ -3,6 +3,18 @@
     <head>
         <title>의사전용페이지</title>
         <h1><a href="/"><img src="../images/logo.svg" style="width: 130px" /></a></h1>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" href="/css/bootstrap.css" />
+  <link
+    rel="stylesheet"
+    href="/fonts/font-awesome-4.3.0/css/font-awesome.min.css"
+  />
+  <link rel="stylesheet" href="/css/all.css" />
+  <link
+    href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic"
+    rel="stylesheet"
+    type="text/css"
+  />
         <h1><span style="color:rgb(8, 78, 178)">의사</span>페이지에 오신 것을 환영합니다.</h1>
         <div class="nav-drop">
             <ul>
@@ -56,12 +68,13 @@
                 </section>
         <% }else{ %>
             <div class="opener-holder"></div>
-            <p>반갑습니다! 의사 <%= user.name %> 님</p>
-            <a href="/doctor/logout" class="btn btn-primary rounded"
-            >로그아웃</a> 
-            <a href="/doctor/call"><h1>화상통화하러가기</h1></a>
-        </div>
+                <p>반갑습니다! 의사 <%= user.name %> 님</p>
+                <a href="/doctor/logout" class="btn btn-primary rounded"
+                >로그아웃</a> 
+                <a href="/doctor/call"><h1>화상통화하러가기</h1></a>
+            </div>
         <% } %>
+        <%- include('../partials/footer') %>
         <script>
             let id = $("#p_id");
             let pw = $("#password");
@@ -77,6 +90,9 @@
             }
             });
         </script>
+        <script src="/js/jquery-1.11.2.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/jquery.main.js"></script>
           </div>
         </div>
         </section>
