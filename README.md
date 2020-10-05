@@ -1,4 +1,4 @@
-## About this Project
+## 📌 About this Project
 
 본 웹서비스는 포트폴리오 제작을 위해 만들었습니다.
 
@@ -54,3 +54,4 @@ patients can use AMANDOC web service and see their doctors anywhere, anytime.
 │  │  └─bootstrap
 │  │      └─mixins
 │  └─validation_question
+
