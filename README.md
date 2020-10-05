@@ -16,3 +16,34 @@ This Web Service connects doctors and patients.
 
 AMANDOC is a healthcare service for the patients who has chronic diseases and needs to care their health continuously.
 patients can use AMANDOC web service and see their doctors anywhere, anytime.
+
+
+## Tree Structure
+
+├─public
+│  ├─css
+│  ├─fonts
+│  │  ├─bootstrap
+│  │  └─font-awesome-4.3.0
+│  │      ├─css
+│  │      └─fonts
+│  ├─images
+│  ├─js
+│  ├─scss
+│  │  ├─base
+│  │  └─bootstrap
+│  │      └─mixins
+│  └─validation_question├─public
+│  ├─css
+│  ├─fonts
+│  │  ├─bootstrap
+│  │  └─font-awesome-4.3.0
+│  │      ├─css
+│  │      └─fonts
+│  ├─images
+│  ├─js
+│  ├─scss
+│  │  ├─base
+│  │  └─bootstrap
+│  │      └─mixins
+│  └─validation_question
