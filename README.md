@@ -20,7 +20,8 @@ AMANDOC is a healthcare service for the patients who has chronic diseases and ne
 patients can use AMANDOC web service and see their doctors anywhere, anytime.
 
 
-
+<br>
+<br>
 
 
 
