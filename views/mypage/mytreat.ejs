@@ -54,13 +54,13 @@
                 <%}else{%>
                     <h2>진료기록이 없습니다.</h2>
                 <%}%>
-        <nav class="col-8" style="margin-left: 7em;">
-            <% 
+        <nav>
+            <%
               var offset = 2;
               var previousBtnEnabled = currentPage>1;
               var nextBtnEnabled = currentPage<maxPage;
             %>
-              <ul class="pagination pagination-sm justify-content-center align-items-center h-100 mb-0"> 
+              <ul class="pagination pagination-sm"> 
                 <li class="page-item <%= previousBtnEnabled?'':'disabled' %>">
                 <a class="page-link" href="/mypage/mytreat?page=<%= currentPage-1 %>&limit=<%= limit %>" <%= previousBtnEnabled?'':'tabindex=-1' %>>«</a>
               </li>
@@ -76,9 +76,8 @@
               </li>
             </ul>
           </nav>
-          <div style="margin-left: 8em;">
+          <div class="btn-holder">
                 <a href="/mypage">개인 정보</a>
-                <a href="/mypage/mytreat">진료 기록</a>
                 <a href="/">메인으로</a>
           </div>
     </div>
