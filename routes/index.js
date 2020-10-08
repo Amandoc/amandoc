@@ -35,7 +35,7 @@ router.get("/", async (req, res, next) => {
 
 //회원가입으로 들어오는 경로 처리
 router.get("/join", isNotLoggedIn, (req, res, next) => {
-  const errors = req.flash("errors")[0] || {};
+  const errors = req.flash("errors");
   res.render("logjoin/join", { errors: errors });
 });
 router.get("/login", isNotLoggedIn, (req, res, next) => {
