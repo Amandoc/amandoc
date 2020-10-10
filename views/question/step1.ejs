@@ -19,19 +19,6 @@
       rel="stylesheet"
       type="text/css"
     />
-    <!-- <style type="text/css">
-      form div {
-        margin-bottom: 20px;
-      }
-      input.error,
-      select.error {
-        border: 1px solid red;
-      }
-      label.error {
-        margin-left: 10px;
-        color: red;
-      }
-    </style> -->
   </head>
   <body>
     <div id="wrapper">
@@ -50,98 +37,138 @@
               <% } else { %>
               <!-- 처음 예진표를 작성하는 경우! / New & Create -->
               <h2 style="margin-bottom: 30px">예진표 작성</h2>
-              <h4>STEP 1</h4>
-              <div class="step-image">
-                <img src="/images/step-02.png" />
-              </div>
-              <div>
-                <% if(step1 == null || step1.length == 0){ %>
-                <form action="/question/step1" method="post">
-                  <div>
-                    <input type="hidden" name="p_id" value="<%= user._id%>" />
-                  </div>
-                  <div>
-                    <label for="height"> 신장 * </label>
-                    <input
-                      type="text"
-                      id="height"
-                      name="height"
-                      value=""
-                      autofocus
-                    />
-                  </div>
-                  <div>
-                    <label for="weight">체중 * </label>
-                    <input type="text" id="weight" name="weight" value="" />
-                  </div>
-                  <div>
-                    <label for="history">과거병력</label>
-                    <input type="text" id="history" name="history" value="" />
-                  </div>
-                  <div>
-                    <label for="family">가족력</label>
-                    <input
-                      type="text"
-                      id="family"
-                      name="family_member"
-                      value=""
-                      placeholder="관계"
-                    />
-                    <input
-                      type="text"
-                      id="family"
-                      name="family_disease"
-                      value=""
-                      placeholder="병명"
-                    />
-                  </div>
-                  <div>
-                    <label for="drug">복용중인 약</label>
-                    <input type="text" id="drug" name="drug" value="" /> <br />
-                  </div>
-                  <div class="selectbox">
-                    <label for="drink_week">음주</label>
-                    <select id="drink_week" name="drink_week">
-                      <option value="none" selected>--일주일 기준--</option>
-                      <option value="해당없음">해당없음</option>
-                      <option value="1회~3회">1회 ~ 3회</option>
-                      <option value="4회~6회">4회 ~ 6회</option>
-                      <option value="7회이상">7회 이상</option>
-                    </select>
-                    <label for="drink_cnt"></label>
-                    <select id="drink_cnt" name="drink_cnt">
-                      <option value="" selected>--소주기준--</option>
-                      <option value="해당없음">해당없음</option>
-                      <option value="1병미만">1병 미만</option>
-                      <option value="1병이상 ~ 2병미만">
-                        1병 이상 ~ 2병미만
-                      </option>
-                      <option value="2병이상">2병 이상</option>
-                    </select>
-                  </div>
-                  <div class="selectbox">
-                    <label for="smoke">흡연</label>
-                    <select id="smoke" name="smoke_cnt">
-                      <option value="" selected>--하루기준--</option>
-                      <option value="해당없음">해당없음</option>
-                      <option value="1갑 미만">1갑 미만</option>
-                      <option value="1갑이상 ~ 2갑미만">
-                        1갑 이상~2갑미만
-                      </option>
-                      <option value="2갑이상">2갑 이상</option>
-                    </select>
-                  </div>
-                  <div>
-                    <button>
-                      <a href="javascript:history.back();">뒤로</a></button
-                    ><button type="submit">다음</button>
-                  </div>
-                </form>
-              </div>
-
-              <% } else { %>
               <div class="step1">
                 <div class="int-area">
+                  <h4>STEP 1</h4>
+                  <div class="step-image">
+                    <img src="/images/step-02.png" />
+                  </div>
+                  <div>
+                    <% if(step1 == null || step1.length == 0){ %>
+                    <form action="/question/step1" method="post">
+                      <div>
+                        <input type="hidden" name="p_id" value="<%= user._id%>" />
+                      </div>
+                      <div>
+                        <label for="height"> 신장 * </label>
+                        <input
+                          type="text"
+                          id="height"
+                          name="height"
+                          value=""
+                          autofocus
+                        />
+                        <% if(errors.height) {%>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.height.message%></span>
+                          </p>
+                          <% }%>
+                      </div>
+                      <div>
+                        <label for="weight">체중 * </label>
+                        <input type="text" id="weight" name="weight" value="" />
+                      </div>
+                      <% if(errors.weight) {%>
+                        <p>
+                          <span style="color: red; font-size: 12px"><%= errors.weight.message%></span>
+                        </p>
+                        <% }%>
+                      <div>
+                        <label for="history">과거병력</label>
+                        <input type="text" id="history" name="history" value="" />
+                      </div>
+                      <div>
+                        <label for="family">가족력</label>
+                        <input
+                          type="text"
+                          id="family"
+                          name="family_member"
+                          value=""
+                          placeholder="관계"
+                        />
+                        <input
+                          type="text"
+                          id="family"
+                          name="family_disease"
+                          value=""
+                          placeholder="병명"
+                        />
+                      </div>
+                      <div>
+                        <label for="drug">복용중인 약</label>
+                        <input type="text" id="drug" name="drug" value="" /> <br />
+                      </div>
+                      <div>
+                        <label for="drink_week">음주*</label>
+                        <div class="selectbox">
+                          <select id="drink_week" name="drink_week">
+                            <option value="" selected>--일주일 기준--</option>
+                            <option value="해당없음">해당없음</option>
+                            <option value="1회~3회">1회 ~ 3회</option>
+                            <option value="4회~6회">4회 ~ 6회</option>
+                            <option value="7회이상">7회 이상</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label for="drink_cnt"></label>
+                          <div class="selectbox">
+                            <select id="drink_cnt" name="drink_cnt">
+                              <option value="" selected>--소주기준--</option>
+                              <option value="해당없음">해당없음</option>
+                              <option value="1병미만">1병 미만</option>
+                              <option value="1병이상 ~ 2병미만">1병 이상 ~ 2병미만</option>
+                              <option value="2병이상">2병 이상</option>
+                            </select>
+                          </div>
+                        </div>
+                        <% if(errors.drink_week && errors.drink_cnt) {%>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.drink_week.message%></span>
+                          </p>
+                        <% } else if (errors.drink_week) { %>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.drink_week.message%></span>
+                          </p>
+                        <% } else if (errors.drink_cnt) { %>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.drink_cnt.message%></span>
+                          </p
+                        <% } %>
+                      </div>
+                      <div>
+                        <label for="smoke">흡연*</label>
+                        <div class="selectbox">
+                          <select id="smoke" name="smoke_cnt">
+                            <option value="" selected>--하루기준--</option>
+                            <option value="해당없음">해당없음</option>
+                            <option value="1갑 미만">1갑 미만</option>
+                            <option value="1갑이상 ~ 2갑미만">
+                              1갑 이상~2갑미만
+                            </option>
+                            <option value="2갑이상">2갑 이상</option>
+                          </select>
+                        </div>
+                        <% if(errors.smoke_cnt) {%>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.smoke_cnt.message%></span>
+                          </p>
+                        <% }%>
+                      </div>
+                      <div>
+                        <div class="main btn-holder">
+                          <button class="btn rounded">
+                            <a href="javascript:history.back();">뒤로</a>
+                          </button>
+                          <button class="btn btn-primary rounded" type="submit">
+                            STEP 2
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <% } else { %>
                   <!-- 작성한 내용이 있을 경우! / Update -->
                   <h5 style="color: #3867d6; margin-bottom: 40px">
                     * <%= user.name%>님께서 이전에 작성한 내용입니다.
@@ -164,6 +191,11 @@
                         autofocus
                         placeholder="cm"
                       />
+                      <% if(errors.height) {%>
+                        <p>
+                          <span style="color: red; font-size: 12px"><%= errors.height.message%></span>
+                        </p>
+                        <% }%>
                     </div>
                     <div>
                       <label for="weight">체중 * </label>
@@ -174,6 +206,11 @@
                         value="<%= step1.weight %>"
                         placeholder="kg"
                       />
+                      <% if(errors.weight) {%>
+                        <p>
+                          <span style="color: red; font-size: 12px"><%= errors.weight.message%></span>
+                        </p>
+                        <% }%>
                     </div>
                     <div>
                       <label for="history">과거병력</label>
@@ -213,9 +250,9 @@
                       <br />
                     </div>
                     <div>
-                      <label for="drink">음주</label>
+                      <label for="drink_week">음주*</label>
                       <div class="selectbox">
-                        <select id="drink" name="drink_week">
+                        <select id="drink_week" name="drink_week">
                           <!-- 주량 select 관련 switch 문 -->
                           <% switch(step1.drink_week) { case "해당없음" : %>
                           <option value="">--일주일 기준--</option>
@@ -244,47 +281,59 @@
                           <% break; } %>
                         </select>
                       </div>
-                      <div class="selectbox">
-                        <select id="drink" name="drink_cnt">
-                          <!-- 소주기준 select 관련 switch 문 -->
-                          <% switch(step1.drink_cnt) { case "해당없음" : %>
-                          <option value="">--소주기준--</option>
-                          <option value="해당없음" selected>해당없음</option>
-                          <option value="1병미만">1병 미만</option>
-                          <option value="1병이상 ~ 2병미만">
-                            1병 이상 ~ 2병미만
-                          </option>
-                          <option value="2병이상">2병 이상</option>
-                          <% break; case "1병미만" : %>
-                          <option value="">--소주기준--</option>
-                          <option value="해당없음">해당없음</option>
-                          <option value="1병미만" selected>1병 미만</option>
-                          <option value="1병이상 ~ 2병미만">
-                            1병 이상 ~ 2병미만
-                          </option>
-                          <option value="2병이상">2병 이상</option>
-                          <% break; case "1병이상 ~ 2병미만" : %>
-                          <option value="">--소주기준--</option>
-                          <option value="해당없음">해당없음</option>
-                          <option value="1병미만">1병 미만</option>
-                          <option value="1병이상 ~ 2병미만" selected>
-                            1병 이상 ~ 2병미만
-                          </option>
-                          <option value="2병이상">2병 이상</option>
-                          <% break; case "2병이상" : %>
-                          <option value="">--소주기준--</option>
-                          <option value="해당없음">해당없음</option>
-                          <option value="1병미만">1병 미만</option>
-                          <option value="1병이상 ~ 2병미만">
-                            1병 이상 ~ 2병미만
-                          </option>
-                          <option value="2병이상" selected>2병 이상</option>
-                          <% break; } %>
-                        </select>
+                      <div>
+                        <label for="drink_cnt"></label>
+                        <div class="selectbox">
+                          <select id="drink_cnt" name="drink_cnt">
+                            <!-- 소주기준 select 관련 switch 문 -->
+                            <% switch(step1.drink_cnt) { case "해당없음" : %>
+                            <option value="">--소주기준--</option>
+                            <option value="해당없음" selected>해당없음</option>
+                            <option value="1병미만">1병 미만</option>
+                            <option value="1병이상 ~ 2병미만"> 1병 이상 ~ 2병미만</option>
+                            <option value="2병이상">2병 이상</option>
+  
+                            <% break; case "1병미만" : %>
+                            <option value="">--소주기준--</option>
+                            <option value="해당없음">해당없음</option>
+                            <option value="1병미만" selected>1병 미만</option>
+                            <option value="1병이상 ~ 2병미만">1병 이상 ~ 2병미만</option>
+                            <option value="2병이상">2병 이상</option>
+                            
+                            <% break; case "1병이상 ~ 2병미만" : %>
+                            <option value="">--소주기준--</option>
+                            <option value="해당없음">해당없음</option>
+                            <option value="1병미만">1병 미만</option>
+                            <option value="1병이상 ~ 2병미만" selected>1병 이상 ~ 2병미만</option>
+                            <option value="2병이상">2병 이상</option>
+  
+                            <% break; case "2병이상" : %>
+                            <option value="">--소주기준--</option>
+                            <option value="해당없음">해당없음</option>
+                            <option value="1병미만">1병 미만</option>
+                            <option value="1병이상 ~ 2병미만">1병 이상 ~ 2병미만</option>
+                            <option value="2병이상" selected>2병 이상</option>
+                            <% break; } %>
+                          </select>
+                        </div>
+                        <% if(errors.drink_week && errors.drink_cnt) {%>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.drink_week.message%></span>
+                          </p>
+                        <% } else if (errors.drink_week) { %>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.drink_week.message%></span>
+                          </p>
+                        <% } else if (errors.drink_cnt) { %>
+                          <p>
+                            <span style="color: red; font-size: 12px"><%= errors.drink_cnt.message%></span>
+                          </p
+                        <% } %>
                       </div>
+
                     </div>
                     <div>
-                      <label for="smoke">흡연</label>
+                      <label for="smoke">흡연*</label>
                       <div class="selectbox">
                         <select id="smoke" name="smoke_cnt">
                           <!-- 흡연 select 관련 switch 문 -->
@@ -323,6 +372,11 @@
                           <% break; } %>
                         </select>
                       </div>
+                      <% if(errors.smoke_cnt) {%>
+                        <p>
+                          <span style="color: red; font-size: 12px"><%= errors.smoke_cnt.message%></span>
+                        </p>
+                        <% }%>
                     </div>
                     <div class="main btn-holder">
                       <button class="btn rounded">
@@ -335,8 +389,6 @@
                   </form>
                 </div>
                 <% } %> <% } %>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -345,7 +397,5 @@
     <script src="/js/jquery-1.11.2.min.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/jquery.main.js"></script>
-    <script src="/validation_question/jquery.validate.min.js"></script>
-    <script src="/validation_question/step1.js"></script>
   </body>
 </html>
