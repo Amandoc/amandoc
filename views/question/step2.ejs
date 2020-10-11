@@ -19,6 +19,25 @@
       rel="stylesheet"
       type="text/css"
     />
+    <!-- <style type="text/css">
+      form div { margin-bottom: 20px;}
+      /* input.error, select.error  {
+          border: 1px solid red;
+      } */
+      label.error{
+        display: inherit;
+    font-size: 12px;
+    position: initial;
+    color: red;
+      }
+    </style> -->
+<style>
+  div #first .error {
+    display: none;
+    position: relative;
+    color: red;
+  }
+</style>
   </head>
   <body>
     <div id="wrapper">
@@ -34,7 +53,6 @@
                   페이지로 이동합니다. </h3>
                 <a href="/">메인페이지로 돌아가기</a>
               <% } else { %>
-
               <!-- 로그인 O -->
                 <h2 style="margin-bottom: 30px">예진표 작성</h2>
                 <h4>STEP 2</h4>
@@ -50,59 +68,38 @@
                   <h5 style="color: #3867d6; margin-bottom: 40px">
                     빠짐없이 작성해주세요.
                   </h5>
-                  <div>
+                  <div id="first">
                     <label>초진여부</label>
-                      <input type="radio" id="treat_time" name="treat_time" value="초진"/><label style="color: #444;
-                      font-size: medium;
-                      float: none;"for="treat_time">초진</label>
-                      <input type="radio" id="treat_time" name="treat_time" value="재진"/><label style="color: #444;
-                      font-size: medium;
-                      float: none;"for="treat_time">재진</label>
-                      </div>
-                      <% if(errors.treat_time) {%>
-                        <p>
-                          <span style="color: red; font-size: 12px"><%= errors.treat_time.message%></span>
-                        </p>
-                        <% }%>
+                      <input type="radio" id="treat_time" name="treat_time1" value="초진"/><label for="treat_time1">초진</label>
+                      <input type="radio" id="treat_time" name="treat_time2" value="재진"/><label for="treat_time2">재진</label>
                   </div>
                   <div>
                     <label for="treat_div">진료과목</label>
                     <div class="selectbox">
-                      <select id="treat_div" name="treat_div">
-                        <option value='' selected>--선택--</option>
-                        <option value='호흡기내과'>호흡기내과</option>
-                        <option value='정형외과'>정형외과</option>
-                        <option value='이비인후과'>이비인후과</option>
-                        <option value='안과'>안과</option>
-                        <option value='피부과'>피부과</option>
-                        <option value='신경과'>신경과</option>
-                        <option value='치과'>치과</option>
-                        <option value='정신건강의학과'>정신건강의학과</option>
-                        <option value='비뇨기과'>비뇨기과</option>
-                        <option value='소아과'>소아과</option>
-                      </select>
-                    </div>
-                    <% if(errors.disease_desc) {%>
-                      <p>
-                        <span style="color: red; font-size: 12px"><%= errors.disease_desc.message%></span>
-                      </p>
-                      <% }%>
+                    <select id="treat_div" name="treat_div">
+                      <option value='' selected>--선택--</option>
+                      <option value='호흡기내과'>호흡기내과</option>
+                      <option value='정형외과'>정형외과</option>
+                      <option value='이비인후과'>이비인후과</option>
+                      <option value='안과'>안과</option>
+                      <option value='피부과'>피부과</option>
+                      <option value='신경과'>신경과</option>
+                      <option value='치과'>치과</option>
+                      <option value='정신건강의학과'>정신건강의학과</option>
+                      <option value='비뇨기과'>비뇨기과</option>
+                      <option value='소아과'>소아과</option>
+                    </select>
                   </div>
-                  
+                </div>
                   <div>
                     <label for="disease_desc">증상</label>
                     <input type="textarea" id="disease_desc" name="disease_desc" value=""/>
-                    <% if(errors.disease_desc) {%>
-                      <p>
-                        <span style="color: red; font-size: 12px"><%= errors.disease_desc.message%></span>
-                      </p>
-                      <% }%>
                   </div>
                 </div> <!--  step2 내용의 끝 -->
                   <div class="main btn-holder">
                     <button class="btn"><a href="javascript:history.back();">뒤로</a></button>
                     <button class="btn btn-primary"
-                    type="submit">진료받기</button>
+                    type="submit">다음</button>
                   </div>
                 </form>
                 </div>
@@ -116,5 +113,7 @@
       <script src="/js/jquery-1.11.2.min.js"></script>
       <script src="/js/bootstrap.js"></script>
       <script src="/js/jquery.main.js"></script>
+      <script src ="/validation_question/jquery.validate.min.js"></script>
+      <script src ="/validation_question/step2.js"></script>
     </body>
   </html>
