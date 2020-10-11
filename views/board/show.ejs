@@ -141,13 +141,7 @@
                         <!-- small 수정 / 삭제 -->
                         <% if(isAuthenticated && comment.commenter && user.id ==
                         comment.commenter._id){ %>
-                          <small>
-                          <a
-                            href="javascript:void(0)"
-                            onclick="$('.comment-reply-enabled').removeClass('comment-reply-enabled');
-                            $('.comment-edit-enabled').removeClass('comment-edit-enabled'); $('#comment-<%= comment._id %>').addClass('comment-edit-enabled')"
-                            >수정</a>
-                          |
+                          <small>                          |
                           <form
                             action="/comments/<%= comment._id %>?postId=<%= qna._id %>&_method=delete"
                             method="post" style="display: contents;"

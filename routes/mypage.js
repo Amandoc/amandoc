@@ -7,6 +7,7 @@ const Patients = require("../models/patients");
 const moment = require("moment");
 const Step1 = require("../models/Step1");
 const Step2 = require("../models/Step2");
+
 //Date format 사용
 router.get("/", isLoggedIn, async (req, res, next) => {
   await Step1.findOne({ p_id: res.locals.user })
@@ -76,6 +77,7 @@ router.get("/mytreat", isLoggedIn, async (req, res, next) => {
     nexr(err);
   }
 });
+
 // 전화번호,주소,이메일 수정
 router.post("/:p_id/phone", isLoggedIn, async (req, res, next) => {
   try {
@@ -122,6 +124,7 @@ router.post("/:p_id/email", isLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
+
 // 회원 탈퇴하기
 router.post("/:p_id", isLoggedIn, async (req, res, next) => {
   try {

@@ -19,19 +19,6 @@
       rel="stylesheet"
       type="text/css"
     />
-    <!-- <style type="text/css">
-      form div { margin-bottom: 20px;}
-      /* input.error, select.error  {
-          border: 1px solid red;
-      } */
-      label.error{
-        display: inherit;
-    font-size: 12px;
-    position: initial;
-    color: red;
-      }
-    </style> -->
-
   </head>
   <body>
     <div id="wrapper">
@@ -71,34 +58,51 @@
                       <input type="radio" id="treat_time" name="treat_time" value="재진"/><label style="color: #444;
                       font-size: medium;
                       float: none;"for="treat_time">재진</label>
+                      </div>
+                      <% if(errors.treat_time) {%>
+                        <p>
+                          <span style="color: red; font-size: 12px"><%= errors.treat_time.message%></span>
+                        </p>
+                        <% }%>
                   </div>
                   <div>
                     <label for="treat_div">진료과목</label>
                     <div class="selectbox">
-                    <select id="treat_div" name="treat_div">
-                      <option value='' selected>--선택--</option>
-                      <option value='호흡기내과'>호흡기내과</option>
-                      <option value='정형외과'>정형외과</option>
-                      <option value='이비인후과'>이비인후과</option>
-                      <option value='안과'>안과</option>
-                      <option value='피부과'>피부과</option>
-                      <option value='신경과'>신경과</option>
-                      <option value='치과'>치과</option>
-                      <option value='정신건강의학과'>정신건강의학과</option>
-                      <option value='비뇨기과'>비뇨기과</option>
-                      <option value='소아과'>소아과</option>
-                    </select>
+                      <select id="treat_div" name="treat_div">
+                        <option value='' selected>--선택--</option>
+                        <option value='호흡기내과'>호흡기내과</option>
+                        <option value='정형외과'>정형외과</option>
+                        <option value='이비인후과'>이비인후과</option>
+                        <option value='안과'>안과</option>
+                        <option value='피부과'>피부과</option>
+                        <option value='신경과'>신경과</option>
+                        <option value='치과'>치과</option>
+                        <option value='정신건강의학과'>정신건강의학과</option>
+                        <option value='비뇨기과'>비뇨기과</option>
+                        <option value='소아과'>소아과</option>
+                      </select>
+                    </div>
+                    <% if(errors.disease_desc) {%>
+                      <p>
+                        <span style="color: red; font-size: 12px"><%= errors.disease_desc.message%></span>
+                      </p>
+                      <% }%>
                   </div>
-                </div>
+                  
                   <div>
                     <label for="disease_desc">증상</label>
                     <input type="textarea" id="disease_desc" name="disease_desc" value=""/>
+                    <% if(errors.disease_desc) {%>
+                      <p>
+                        <span style="color: red; font-size: 12px"><%= errors.disease_desc.message%></span>
+                      </p>
+                      <% }%>
                   </div>
                 </div> <!--  step2 내용의 끝 -->
                   <div class="main btn-holder">
                     <button class="btn"><a href="javascript:history.back();">뒤로</a></button>
                     <button class="btn btn-primary"
-                    type="submit">다음</button>
+                    type="submit">진료받기</button>
                   </div>
                 </form>
                 </div>
@@ -112,7 +116,5 @@
       <script src="/js/jquery-1.11.2.min.js"></script>
       <script src="/js/bootstrap.js"></script>
       <script src="/js/jquery.main.js"></script>
-      <script src ="/validation_question/jquery.validate.min.js"></script>
-      <script src ="/validation_question/step2.js"></script>
     </body>
   </html>

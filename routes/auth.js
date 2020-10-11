@@ -100,6 +100,7 @@ router.post("/login", isNotLoggedIn, (req, res, next) => {
     });
   })(req, res, next);
 });
+
 // 잊어버린 아이디/비번 찾기
 router.post("/findId", async (req, res, next) => {
   const { name, ph_no } = req.body;
