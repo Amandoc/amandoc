@@ -28,15 +28,15 @@
         ></script>
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
         <script src="/js/boardscript.js"></script>
+        <script src="/js/validate_comment.js"></script>
         <style>
+          .comment-edit,
           .comment-edit-enabled .comment-show {
-            display: none;
+            display:none;
           }
-          .comment-edit {
-            display : none;
-          }
-          .comment-edit-enabled {
-            display: inherit;
+
+          .comment-edit-enabled .comment-edit {
+            display:inherit;
           }
         </style>
     </head>
@@ -108,97 +108,95 @@
             </div>
     
 
-            <!-- 여기부터 댓글 show -->
-            
-            <div class="comment">
+          <!-- 여기부터 댓글 show -->  
+          <div class="comment">
             <h4>댓글</h4>
             <div class="comment-each">
-            <% if(comments.length){ %>
-              <div class="show-comment">
-                <hr>
-                <% comments.forEach(function(comment) { %>
-                <div class="show-comment">
-                  <% if(comment.isDeleted){ %>
-                  <p style="color: rgb(175, 175, 175); margin: 20px 0;">(삭제된 댓글입니다.)</p>
-                  <% } else { %>
-                    <!-- 삭제가 안됐으면 댓글 보여줌( id, 내용, 날짜, 수정 / 삭제 버튼) -->
-                    <div class="show-comment">
-                      작성자 : <%= comment.commenter.p_id %></div>
+              <% if(comments.length){ %>
+                  <hr>
+                  <% comments.forEach(function(comment) { %>
+                  <div class="show-comment">
+                    <% if(comment.isDeleted){ %>
+                    <p style="color: rgb(175, 175, 175); margin: 20px 0;">(삭제된 댓글입니다.)</p>
+                    <% } else { %>
+                      <!-- 삭제가 안됐으면 댓글 보여줌( id, 내용, 날짜, 수정 / 삭제 버튼) -->
+                      <div class="show-comment">
+                        작성자 : <%= comment.commenter.p_id %>
                       <div id="comment-<%= comment._id %>">
-                      <!-- class="<%= (commentError._id == comment._id)?'comment-edit-enabled':'' %>" --> 
-                      
-                      <div class="comment-show">
-                        <p><%= comment.text %></p>
-                        <br>
-                        <!-- 댓글 작성 시간 -->
-                        <small>
-                        <span data-date-time=" <%= comment.createdAt %>"></span>
-                        <% if(comment.updatedAt){ %> | 수정됨:
-                          <span data-date-time="<%= comment.updatedAt %>"></span>
-                          <% } %> 
-                        </small>
                         
-                        <!-- small 수정 / 삭제 -->
-                        <% if(isAuthenticated && comment.commenter && user.id ==
-                        comment.commenter._id){ %>
+                        <div class="comment-show">
+                          <p><%= comment.text %></p>
+                          <br>
+                          <!-- 댓글 작성/업데이트 시간 -->
                           <small>
-                          <a
-                            href="javascript:void(0)"
-                            onclick="$('.comment-reply-enabled').removeClass('comment-reply-enabled');
-                            $('.comment-edit-enabled').removeClass('comment-edit-enabled'); $('#comment-<%= comment._id %>').addClass('comment-edit-enabled')"
-                            >수정</a>
-                          |
-                          <form
-                            action="/comments/<%= comment._id %>?postId=<%= qna._id %>&_method=delete"
-                            method="post" style="display: contents;"
-                          >
-                            <a
-                              href="javascript:void(0)"
-                              onclick="$('.comment-reply-enabled').removeClass('comment-reply-enabled');
-                              $('.comment-edit-enabled').removeClass('comment-edit-enabled'); $('#comment-<%= comment._id %>').addClass('comment-edit-enabled')"
-                              >수정</a>
-                            |
-                            <form
-                              action="/comments/<%= comment._id %>?postId=<%= qna._id %>&_method=delete"
-                              method="post"
-                              class="d-inline"
-                            >
+                            <span data-date-time=" <%= comment.createdAt %>"></span>
+                            <% if(comment.updatedAt){ %> | 수정됨:
+                              <span data-date-time="<%= comment.updatedAt %>"></span>
+                            <% } %> 
+                          </small>
+                          
+                            <!-- comment.id==로그인 유저와 일치시 댓글 수정 / 삭제 -->
+                            <% if(isAuthenticated && comment.commenter && user.id ==
+                              comment.commenter._id){ %>
+                              <small>
+                              <a
+                                href="javascript:void(0)"
+                                onclick="$('.comment-reply-enabled').removeClass('comment-reply-enabled');
+                                $('.comment-edit-enabled').removeClass('comment-edit-enabled'); 
+                                $('#comment-<%= comment._id %>').addClass('comment-edit-enabled')"
+                                >수정</a>
+                              |
+                              <form
+                                action="/comments/<%= comment._id %>?postId=<%= qna._id %>&_method=delete"
+                                method="post" style="display: contents;"
+                              >
                               <a
                                 href="javascript:void(0)"
                                 onclick="confirm('삭제하시겠습니까?')?this.parentElement.submit():null;"
-                                >삭제</a>
-                            </form>
-                          </small>
-                        <% } %>
-                      </div>
-                          <div class="comment-edit">
-                            <%- include('./comment-form', { actionUrl:'/comments/' +
-                              comment._id + '?postId=' + qna._id + '&_method=put', comment:
-                              comment, commentForm: commentForm, commentError: commentError,
-                              }); %>
-                          </div>
-                        <% } %>
-                      </div> <!-- border-top div 끝 -->
-                      <% }) %>
-                    </div> <!-- show comment div 끝-->
-                    <% } %>
-                  </div> <!-- 댓글 show 첫번쨰 div 끝 -->
-                  <!-- 여기까지 댓글 show -->
-                </div>
-              </div>
-      <!-- 댓글 입력창 -->
-      <div class="widget-area blank">
-        <div class="status-upload">
-          <%- include('./comment-form', { actionUrl:'/comments?postId=' + qna._id,
-          comment: {}, commentForm: commentForm, commentError: commentError, });
-          %>
-        </div>
-      </div>
-    </div>
+                              >삭제</a>
+                              </form>
+                            </small>
+                            <% } %>
+                        </div>
 
-  </section>
+                        <!-- 댓글 수정 창 눌렀을때 댓글 수정 창 -->
+                        <div class="comment-edit"> <!-- css로 display 효과 발동 -->
+                          <form action="/comments/<%= comment._id %>?postId=<%= qna._id %>&_method=put" method="post">
+                            <div <%= !isAuthenticated?'disabled':'' %>>
+                              <textarea class="form-control isContent" id= content name="text" style="border: none;"><%= (commentForm._id == comment._id)?commentForm.form.text:comment.text %></textarea>
+                              <span style="color:red; font-size:11px;" id="noContent"></span>
+                              <div>  
+                                <button type="submit" class="btn btn-primary-1">수정</button>
+                                <button class="btn btn-primary-1">
+                                  <a href="javascript:void(0)" style="color: white;" onclick="$('#comment-<%= comment._id %>').removeClass('comment-edit-enabled')
+                                ">취소</a></button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>    <!-- 댓글수정 창 -->
+                        <% } %> <!-- else문 괄호 닫음-->
+                      </div>  <!-- comment-<%= comment._id %> -->
+                      </div>  <!--forEach 밑에 show - comment --> 
+                    <% }) %>   <!-- comments.forEach 괄호 닫음-->
+                <% } %> <!-- comments.length 괄호 닫음-->
+            </div>  <!-- comment-each -->
+          </div>  <!-- comment -->
+                      
+          <!-- 댓글 입력창 -->
+          <form action="/comments?postId=<%= qna._id %>" method="post">
+            <div <%= !isAuthenticated?'disabled':'' %>>
+                <textarea placeholder="댓글을 작성하세요" class="form-control isContent" id= content name="text" style="border: none;"></textarea>
+                <span style="color:red; font-size:11px;" id="noContent"></span>
+                <button type="submit" id="canSubmit" class="btn btn-success green">등록하기</button>
+            </div>
+          </form>
+      
+      </div> <!--textblock-->
+    </div>  <!--container -->
+
+  </section>    <!-- visual -->
   <%- include('../partials/footer') %>
-</div>
+</div>   <!-- wrapper -->
   <script src="/js/jquery-1.11.2.min.js"></script>
   <script src="/js/bootstrap.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

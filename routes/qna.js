@@ -141,7 +141,7 @@ router.put("/:id", isLoggedIn, async (req, res, next) => {
   res.redirect("/qna/" + req.params.id);
 });
 
-// destroyc
+// destroy
 router.delete("/:id", isLoggedIn, async (req, res, next) => {
   const qna = await Qna.deleteOne({ _id: req.params.id }, function (err) {
     if (err) return res.json(err);

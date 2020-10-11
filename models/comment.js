@@ -19,7 +19,7 @@ const commentSchema = new Schema({
     },
     text:{
         type:String,
-        required:[true, 'text is required!']
+        required:true
     },
     isDeleted:{type:Boolean},
     createdAt:{type:Date, default:Date.now},
