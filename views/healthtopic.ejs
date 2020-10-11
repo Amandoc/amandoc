@@ -10,45 +10,47 @@
             <div class="heading-holder">
               <h3>의학정보</h3>
               <!-- 코로나 확진자 수 크롤링 -->
-              <div class="ht-board">
-                <h3>코로나 환자 실시간 현황</h3>
-                <table
-                  class="healthtopic-table"
-                  style="width: 500px; display: contents"
-                >
-                  <% coronaArr.forEach(function(element) { %>
-                  <tr>
-                    <td class="healthtopic-gr"><%=element._text %></td>
-                    <td
-                      colspan="2"
-                      style="display: inline; color: #333; font-weight: 900"
-                    >
-                      <%=element._num %>&nbsp;<span
-                        style="
-                          color: #fa8231;
-                          font-size: 13px;
-                          font-weight: 600;
-                        "
-                        ><%=element._before %></span
+              <div>
+                <div class="ht-board">
+                  <h3>코로나 환자 실시간 현황</h3>
+                  <table
+                    class="healthtopic-table"
+                    style="width: 500px; display: contents"
+                  >
+                    <% coronaArr.forEach(function(element) { %>
+                    <tr>
+                      <td class="healthtopic-gr"><%=element._text %></td>
+                      <td
+                        colspan="2"
+                        style="display: inline; color: #333; font-weight: 900"
                       >
-                    </td>
-                  </tr>
-                  <% }) %>
-                </table>
-                <p>출처 : 질병관리청</p>
+                        <%=element._num %>&nbsp;<span
+                          style="
+                            color: #fa8231;
+                            font-size: 13px;
+                            font-weight: 600;
+                          "
+                          ><%=element._before %></span
+                        >
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </table>
+                  <p>출처 : 질병관리청</p>
+                </div>
+                <div class="ht-board">
+                  <iframe
+                    width="480"
+                    height="260"
+                    src="https://www.youtube.com/embed/0GN8t2u3flc"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
               </div>
-
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/0GN8t2u3flc"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-
               <!-- 건강정보 크롤링 -->
-              <div style="margin-top: 150px">
+              <div style="margin-top: 100px; display: inline-block">
                 <h3>이달의 건강소식</h3>
                 <h5>출처 : 질병관리청</h5>
                 <table class="crawling-table" text-align="left">

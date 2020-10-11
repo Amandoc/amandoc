@@ -4,7 +4,6 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const coronaUrl = "http://ncov.mohw.go.kr/"; //코로나19 바이러스 관련 공식 페이지
 const healthInfo = "http://www.cdc.go.kr/gallery.es?mid=a20509000000&bid=0007"; //질병관리청 페이지
-//const coronaYoutube = "https://coronaboard.kr/";      //코로나 유투브 사이트
 
 router.get("/", function (req, res, next) {
   axios.get(coronaUrl).then((html) => {
@@ -39,19 +38,6 @@ router.get("/", function (req, res, next) {
         infoArr.push(infoObj);
       });
       console.log(infoArr);
-
-      // /*유투브 화면 크롤링 */
-      // const videoArr = [];
-      // $ = cheerio.load(html3.data);
-      // const videoTag = $("div.ylist");
-      // videoTag.each(function(i, elem){                     // li의 갯수만큼 반복
-      //     let videoObj = {
-      //         _addr : $(this).find("a").attr("href")
-      //     }
-      //     videoArr.push(videoObj);          // 배열로 만듦
-      // });
-
-      // console.log(videoArr);
 
       res.render("healthtopic", { infoArr: infoArr, coronaArr: coronaArr });
     });

@@ -22,6 +22,11 @@ p {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+*:focus {
+  outline: none;
+  border: 0;
+}
+
 .btn-container {
   display: flex;
   flex-wrap: wrap;
@@ -1515,7 +1520,8 @@ a:hover {
 
   .btn-primary {
     color: #4b7bec;
-    border: none;
+    border: 0;
+    outline: 0;
   }
 
   #header .logo {
@@ -1925,6 +1931,7 @@ a:hover {
 
 .int-area input {
   padding: 18px 10px 5px;
+  margin: 3px;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #999;
@@ -1939,10 +1946,30 @@ a:hover {
   font-size: 14px;
 }
 
+.int-area input:valid + label {
+  position: inherit;
+  /* margin: 10px; */
+  color: red;
+  /* background-color: transparent; */
+  border: none;
+  font-size: 10px;
+  outline: none;
+}
+}
+
+
+label.error {
+  display: inherit;
+  font-size: 12px;
+  position: initial;
+  color: red;
+}
+
 .int-area label {
+  float: left;
   position: absolute;
   left: 10px;
-  font-size: 16px;
+  line-height: 4;
   color: #4b7bec;
   transition: all 0.5s ease;
 }
@@ -1950,6 +1977,40 @@ a:hover {
   color: #fc5c65 !important;
   animation: warning 0.3s ease;
   animation-iteration-count: 3;
+}
+
+.selectbox {
+  position: relative;
+  width: 180px;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px;
+  border: 1px solid #999;
+  z-index: 1;
+}
+.selectbox label {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  height: 40px;
+  line-height: 40px;
+  color: #4b7bec;
+  z-index: -1;
+}
+.selectbox select {
+  font-size: 14px;
+  width: 88%;
+  height: 31px;
+  /* margin: 10px; */
+  padding: 2px;
+  vertical-align: middle;
+  /* line-height: 58px; */
+  /* font-family: inherit; */
+  border: none;
+}
+
+.selectbox option {
+  font-size: 14px;
 }
 
 @keyframes warning {
@@ -1966,8 +2027,7 @@ a:hover {
     transform: translateX(8px);
   }
 }
-.int-area input:focus + label,
-.int-area input:valid + label {
+.int-area input:focus + label {
   top: 0;
   font-size: 12px;
   color: #4b7bec;
@@ -2113,22 +2173,24 @@ a:hover {
   line-height: 31px;
   display: inline-grid;
   vertical-align: inherit;
-  font-size: large;
+  font-size: 16px;
 }
-
 .healthtopic-gr {
   background-color: #3867d6;
-  border-radius: 20px;
+  border-radius: 15px;
   color: white;
   font-weight: 500;
 }
 
 /* 의학정보 크롤링을 감싸는 박스 */
 .ht-board {
-  border-radius: 50px;
-  width: 60%;
-  margin: 50px 0 150px 0;
-  background-color: #9292920d;
+  display: inline-block;
+  border-radius: 40px;
+  float: left;
+  width: 47%;
+  margin: 15px;
+  height: 400px;
+  background-color: #9292921f;
 }
 
 .ht-board h3 {
@@ -2453,7 +2515,15 @@ body .no-padding {
 }
 
 .heading-holder h3 {
-  margin: 40px 0 20px 0;
+  margin: 20px 0;
+}
+
+.heading-holder iframe {
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  margin-top: 90px;
 }
 
 /* 마이페이지 테이블 */
@@ -2619,4 +2689,24 @@ td {
   background: #3867d6;
   color: white;
   border-bottom: white solid 1px;
+}
+
+/* step1 css */
+
+.step1 {
+  width: 65%;
+  height: 100%;
+  border: solid 2px #3867d6;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0px 0px 25px 5px #3333;
+}
+
+.step1 label {
+  font-size: 15px;
+  line-height: 3;
+}
+
+.step-image {
+  width: 60%;
 }

@@ -11,10 +11,6 @@ const connect = require("./models");
 const flash = require("connect-flash");
 
 const hpp = require("hpp");
-const logger = require("./logger");
-
-// const sanitizeHtml = require('sanitize-html');
-// const html = "<script>TEST</script>";
 
 // Router
 const indexRouter = require("./routes");
@@ -51,7 +47,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   app.use(morgan("dev"));
 }
-// app.use(morgan('dev'));
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -67,7 +63,6 @@ const sessionOption = {
 };
 if (process.env.NODE_ENV === "production") {
   sessionOption.proxy = true;
-  // sessionOption.cookie.secure = true;
 }
 app.use(session(sessionOption));
 app.use(flash());
