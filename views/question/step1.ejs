@@ -20,6 +20,18 @@
       type="text/css"
     />
   </head>
+  <style>
+    div #drink .error{
+      position: relative;
+    font-size: 11px;
+    }
+
+    div #smoke .error {
+      position: relative;
+    font-size: 11px;
+    }
+    
+  </style>
   <body>
     <div id="wrapper">
       <%- include('../partials/nav') %>
@@ -281,7 +293,7 @@
                           <% break; } %>
                         </select>
                       </div>
-                      <div>
+                      <div id="drink">
                         <label for="drink_cnt"></label>
                         <div class="selectbox">
                           <select id="drink_cnt" name="drink_cnt">
@@ -332,7 +344,7 @@
                       </div>
 
                     </div>
-                    <div>
+                    <div id="smoke">
                       <label for="smoke">흡연*</label>
                       <div class="selectbox">
                         <select id="smoke" name="smoke_cnt">
@@ -397,5 +409,7 @@
     <script src="/js/jquery-1.11.2.min.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/jquery.main.js"></script>
+    <script src="/validation_question/jquery.validate.min.js"></script>
+    <script src="/validation_question/step1.js"></script>
   </body>
 </html>
