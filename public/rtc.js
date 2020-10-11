@@ -10,8 +10,8 @@ const remoteVideoComponent = document.getElementById('remote-video')
 // 변수 선언
 const socket = io()
 const mediaConstraints = {
-  audio: true,
-  video: { width: 1280, height: 720 },
+  "audio" : true,
+  "video" : { width: 1280, height: 720 },
 }
 let localStream
 let remoteStream
