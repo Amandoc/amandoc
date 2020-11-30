@@ -33,9 +33,19 @@
     </style> -->
 <style>
   div #first .error {
-    display: none;
     position: relative;
     color: red;
+    font-size: 11px;
+  }
+
+  div #subject .error {
+    position: relative;
+    font-size: 11px;
+  }
+  
+  div #symp .error {
+    position: relative;
+    font-size: 11px;
   }
 </style>
   </head>
@@ -68,13 +78,24 @@
                   <h5 style="color: #3867d6; margin-bottom: 40px">
                     빠짐없이 작성해주세요.
                   </h5>
+                  <div class="int-area">
                   <div id="first">
                     <label>초진여부</label>
-                      <input type="radio" id="treat_time" name="treat_time1" value="초진"/><label for="treat_time1">초진</label>
-                      <input type="radio" id="treat_time" name="treat_time2" value="재진"/><label for="treat_time2">재진</label>
+                      <input type="radio" id="treat_time1" name="treat_time" value="초진"/><label style="color: #444;
+                      font-size: medium;
+                      float: none;"for="treat_time1">초진</label>
+                      <input type="radio" id="treat_time2" name="treat_time" value="재진"/><label style="color: #444;
+                      font-size: medium;
+                      float: none;"for="treat_time2">재진</label>
+                      </div>
+                      <% if(errors.treat_time) {%>
+                        <p>
+                          <span style="color: red; font-size: 12px"><%= errors.treat_time.message%></span>
+                        </p>
+                        <% }%>
                   </div>
-                  <div>
-                    <label for="treat_div">진료과목</label>
+                  <div id="subject">
+                    <label>진료과목</label>
                     <div class="selectbox">
                     <select id="treat_div" name="treat_div">
                       <option value='' selected>--선택--</option>
@@ -91,7 +112,7 @@
                     </select>
                   </div>
                 </div>
-                  <div>
+                  <div id="symp">
                     <label for="disease_desc">증상</label>
                     <input type="textarea" id="disease_desc" name="disease_desc" value=""/>
                   </div>
@@ -113,7 +134,6 @@
       <script src="/js/jquery-1.11.2.min.js"></script>
       <script src="/js/bootstrap.js"></script>
       <script src="/js/jquery.main.js"></script>
-      <script src ="/validation_question/jquery.validate.min.js"></script>
-      <script src ="/validation_question/step2.js"></script>
+      
     </body>
   </html>
