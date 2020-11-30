@@ -2,8 +2,8 @@
   font-size: 100.01%;
 }
 ::selection {
-  background-color: #4b7becb0;
-  color: white;
+  background-color: #273c75;
+  color: #f5f6fa;
 }
 
 html {
@@ -43,7 +43,7 @@ p {
   width: 400px;
   height: 90px;
   border-radius: 5em;
-  z-index: 1;
+  /* z-index: 1; */
   font-size: 2rem;
   border: none;
   outline: none;
@@ -103,7 +103,7 @@ a:hover {
   transform: translate(-50%, -50%);
   font-size: 21px;
   color: white;
-  z-index: 2;
+  /* z-index: 2; */
   text-align: center;
 }
 
@@ -112,7 +112,7 @@ a:hover {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 #wrapper {
@@ -309,7 +309,7 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   position: relative;
-  z-index: 1;
+  /* z-index: 1; */
   font-size: 2.4rem;
   line-height: 1.5;
   letter-spacing: 0;
@@ -675,9 +675,9 @@ a:hover {
   float: left;
 }
 
-.cycle-gallery .mask .slide.active {
+/* .cycle-gallery .mask .slide.active {
   z-index: 1;
-}
+} */
 
 .visual-container {
   background: #4e384e;
@@ -1060,7 +1060,7 @@ a:hover {
     width: 250px;
     height: 90px;
     border-radius: 5em;
-    z-index: 1;
+    /* z-index: 1; */
     font-size: 1.7rem;
     background-color: rgba(75, 75, 75, 0.4);
     color: white;
@@ -1494,7 +1494,7 @@ a:hover {
     width: 200px;
     height: 80px;
     border-radius: 5em;
-    z-index: 1;
+    /* z-index: 1; */
     font-size: 1.5rem;
     background-color: rgba(75, 75, 75, 0.4);
     color: white;
@@ -1947,7 +1947,7 @@ a:hover {
 }
 
 .int-area input:valid + label {
-  position: inherit;
+  /* position: inherit; */
   /* margin: 10px; */
   color: red;
   /* background-color: transparent; */
@@ -1967,9 +1967,10 @@ label.error {
   float: left;
   position: absolute;
   left: 10px;
-  line-height: 4;
+  /* line-height: 4; */
   color: #4b7bec;
   transition: all 0.5s ease;
+  font-size: 12px;
 }
 .int-area label.warning {
   color: #fc5c65 !important;
@@ -2707,4 +2708,28 @@ td {
 
 .step-image {
   width: 60%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1 !important; /* Sit on top */
+  text-align: center;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
 }
