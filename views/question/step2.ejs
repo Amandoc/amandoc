@@ -82,10 +82,10 @@
                   <div id="first">
                     <label>초진여부</label>
                       <input type="radio" id="treat_time1" name="treat_time" value="초진"/><label style="color: #444;
-                      font-size: medium;
+                      font-size: medium; display: contents;
                       float: none;"for="treat_time1">초진</label>
                       <input type="radio" id="treat_time2" name="treat_time" value="재진"/><label style="color: #444;
-                      font-size: medium;
+                      font-size: medium; display: contents;
                       float: none;"for="treat_time2">재진</label>
                       </div>
                       <% if(errors.treat_time) {%>
@@ -97,7 +97,7 @@
                   <div id="subject">
                     <label>진료과목</label>
                     <div class="selectbox">
-                    <select id="treat_div" name="treat_div">
+                    <select id="treat_div" name="treat_div" style="width: 90%;">
                       <option value='' selected>--선택--</option>
                       <option value='호흡기내과'>호흡기내과</option>
                       <option value='정형외과'>정형외과</option>
